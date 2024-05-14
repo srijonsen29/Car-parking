@@ -4,3 +4,17 @@
 .text{
     color: #FFFF; 
 }
+.icon{
+    border-radius: 25;
+}
+.body {
+    background-image: url('bg.jpeg') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+  }
+  .login{
+    float :right;
+    opacity: 60%;
+  }
