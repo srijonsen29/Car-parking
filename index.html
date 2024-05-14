@@ -12,9 +12,9 @@
             width: 300px;
             margin: 0 auto;
             padding: 20px;
-            border: 1px solid #ccc;
+            /* border: 1px solid #ccc; */
             border-radius: 10px; /* Curved border */
-            background-color: rgba(255,255,255,0.5); /* Light gray background */
+            /* background-color: rgba(255,255,255,0.5); Light gray background */
         }
         .login-form input {
             width: 100%;
@@ -47,11 +47,20 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar light" style="background-color: #800080;">
+    <div class = "container-fluid front-background body" style = "text-align: center;" >
+    <nav class="navbar navbar-expand-lg navbar light" > 
         <div class="container-fluid">
-            <img src="Icon.png" class="icon"
+            <img src="Black and Gold Modern Automotive Car Showroom Logo (1) (1).png" class="round-icon"
                 alt="" width="50" height="50">
-            <a class="navbar-brand" href="#">CAR PARKING SPACE</a>
+
+                <!-- <div class="icon-label">
+                    <div class="icon-wrapper">
+                        <img src="Black and Gold Modern Automotive Car Showroom Logo (1) (1).png" class="round-icon" alt="Icon">
+                    </div>
+                    <div class="label">CAR PARKING</div>
+                </div> -->
+                
+            <a class="navbar-brand" href="#" style="color: white;">CAR PARKING</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -60,14 +69,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#" style="color: white;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="https://www.bcci.tv/#!">Link</a>
+                        <a class="nav-link active" aria-current="page" href="#" style="color: white;">Product</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="color: white;">Help</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" style="color: white;">Booking</a>
+                    </li>
 
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
                             Dropdown
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -88,25 +103,28 @@
                             <li><a class="dropdown-item" href="https://www.bcci.tv/players/men">Indian Cricketer"s
                                     Grade(Men)</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                    <br>
+                    </li> -->
+
+                    <!-- <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" style="color: white;">Disabled</a>
+                    </li> -->
+
+                    <!-- <br>
                     <button class="btn btn-warning" type="button" id="login">Login</button>
                     <br>
-                    <button class="btn btn-success" type="button" id="signup">Sign Up</button>
+                    <button class="btn btn-success" type="button" id="signup">Sign Up</button> -->
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit" id="search">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="background-color: #8A19D6; ">
+                    <!-- <button class="btn btn-outline-success" type="submit" id="search">Search</button> -->
                 </form>
             </div>
         </div>
     </nav>
 
 
-    <div class = "container-fluid front-background body" style = "text-align: center;" >
+    
+
 
    
     <!-- <input class="form-control me-2" type="search" placeholder="user@gmail.com" aria-label="Search" style = "width: 300px;"> -->
@@ -133,19 +151,23 @@
 </div> -->
 
 
-<div class="login-form login">
-    <h2>Login</h2>
+<div class="login-form login text" style = "text-align: left;">
+    <h2 class = "text" style = "text-align: left;">Login</h2>
     <form action="your_login_handler.php" method="post">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
+        <label for="exampleFormControlInput1" class="form-label">Email I'd</label>
+        <input type="email" name="email" style="background-color: #8A19D6;" placeholder="user@gmail.com" required>
+        <label for="exampleFormControlInput2" class="form-label">Password</label>
+        <input type="password" name="password" style="background-color: #8A19D6; " placeholder="*********" required>
+
     <div class="forgot-password" style = "text-align: left;">
         <a href="#">Forgot Password?</a>
     </div>
+    <button type="submit" style="background-color: #8A19D6; ">Login</button>
     <div class="signup-link">
         Don't have an account? <a href="#">Sign Up</a>
     </div>
+    
+</form>
 </div>
     <h1 class="text" style = "text-align: left;">WELCOME TO CAR PARKING</h1>
 
