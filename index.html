@@ -6,6 +6,8 @@
     <title>Car Parking</title>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@1.9.6/dist/tailwind.min.css">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    
+    
 </head>
 <body class="bg-gray-900">
 <header class="text-gray-400 bg-gray-900 body-font w-full">
@@ -18,6 +20,7 @@
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
       <a class="mr-5 hover:text-white">Home</a>
       <a class="mr-5 hover:text-white" href="product.html" target="_blank">Product</a>
+      <a class="mr-5 hover:text-white">Help</a>
       <a class="mr-5 hover:text-white">Booking</a>
     </nav>
     <button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Search
@@ -43,10 +46,59 @@
           <label for="email" class="leading-7 text-sm text-gray-400">Password</label>
           <input type="password" id="email" name="email" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-red-900 rounded border border-gray-600 focus:border-red-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" placeholder="Password" required>
         </div>
-        <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">Login</button>
+        <button class="text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg" id="myButton">Login</button>
         <p class="text-xs mx-3 my-3 underline decoration-1"><a href="signup.html" target="_blank">Don't have an account? Sign Up</a></p>
       </div>
     </div>
   </section>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYUA7ZmPaQ523zJGrVCF-VxtaDBF00u_U",
+      authDomain: "carparking-7625c.firebaseapp.com",
+      projectId: "carparking-7625c",
+      storageBucket: "carparking-7625c.appspot.com",
+      messagingSenderId: "98866533420",
+      appId: "1:98866533420:web:6083cb1261e8d2ae08ad89",
+      measurementId: "G-Y612QMRV0H"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+  <script src="test.js"></script>
+  <!-- <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+  
+      try {
+        const response = await fetch('/api/index', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Login successful:', data);
+          // Redirect to dashboard or perform other actions
+        } else {
+          console.error('Login failed:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error during login:', error.message);
+      }
+    });
+  </script> -->
 </body>
 </html>
