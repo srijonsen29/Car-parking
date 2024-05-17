@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Slot Booking</title>
+</head>
+<body>
+    <h1>Book a Parking Slot</h1>
+    <form id="bookingForm">
+        <label for="latitude">Latitude:</label>
+        <input type="text" id="latitude" name="latitude" placeholder="Enter latitude">
+
+        <label for="longitude">Longitude:</label>
+        <input type="text" id="longitude" name="longitude" placeholder="Enter longitude">
+
+        <button type="submit">Book Parking Slot</button>
+    </form>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById("bookingForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get latitude and longitude values from the form
+            var latitude = document.getElementById("latitude").value;
+            var longitude = document.getElementById("longitude").value;
+
+            // Perform any validation if needed
+            // For example, check if latitude and longitude are valid numbers
+
+            // Send latitude and longitude values to the server for booking
+            bookParkingSlot(latitude, longitude);
+        });
+
+        // Function to book a parking slot
+        function bookParkingSlot(latitude, longitude) {
+            // Perform booking logic here
+            // You can use AJAX or fetch to send data to the server
+            // For example:
+            fetch('/book-slot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    latitude: latitude,
+                    longitude: longitude
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                // Handle successful booking response
+                console.log(data);
+                alert("Parking slot booked successfully!");
+            })
+            .catch(error => {
+                // Handle error
+                console.error('There was a problem with your fetch operation:', error);
+                alert("Error booking parking slot.");
+            });
+        }
+    </script>
+</body>
+</html>
