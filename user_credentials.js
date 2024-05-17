@@ -1,54 +1,60 @@
-// Import required modules
-const express = require('express');
-const mongoose = require('mongoose');
+const { MongoClient } = require('mongodb');
+const readline = require('readline');
 
-// Create Express app
-const app = express();
+// Connection URI
+const uri = 'mongodb+srv://srijonsen29:g4HdWFsAio28c9hB@carparking.wjq6b5v.mongodb.net/';
+const client = new MongoClient(uri);
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true, useUnifiedTopology: true });
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function() {
-  console.log("Connected to MongoDB");
+// Create a readline interface
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
 });
 
-// Define a user schema
-const userSchema = new mongoose.Schema({
-  username: String,
-  email: String,
-  password: String
-});
-
-// Define a User model
-const User = mongoose.model('User', userSchema);
-
-// Parse JSON bodies for POST requests
-app.use(express.json());
-
-// Endpoint to save user details
-app.post('/users', async (req, res) => {
-  try {
-    // Create a new user instance based on request body
-    const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password // Note: In production, hash the password before saving
+// Function to collect user input
+function getUserInput(prompt) {
+  return new Promise((resolve, reject) => {
+    rl.question(prompt, (input) => {
+      resolve(input);
     });
-    
-    // Save the user to the database
-    await newUser.save();
-    
-    res.status(201).json(newUser); // Return the saved user details
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error saving user');
-  }
-});
+  });
+}
 
-// Start the server
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+// Main function to connect to MongoDB and insert user data
+async function main() {
+  try {
+    // Connect to MongoDB
+    await client.connect();
+    console.log('Connected to MongoDB');
+
+    // Select database and collection
+    const db = client.db('User-credentials');
+    const collection = db.collection('User');
+
+    // Collect user input
+    const name = await getUserInput('Enter name:');
+    const email = await getUserInput('Enter email: ');
+    const password = await getUserInput('Enter password: ');
+
+    // Create a document to insert into the database
+    const user = {
+      name: name,
+      email: email,
+      password: password
+    };
+
+    // Insert the document into the collection
+    const result = await collection.insertOne(user);
+    console.log('Inserted document ID:', result.insertedId);
+
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
+    // Close the MongoDB connection and readline interface
+    await client.close();
+    rl.close();
+  }
+}
+
+// Call the main function to start the program
+main();
